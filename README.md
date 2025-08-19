@@ -1,5 +1,7 @@
 # UC Berkeley Assist Tool
 
+Live Link: [https://abao27.github.io/UCB-Assist-Tool/](https://abao27.github.io/UCB-Assist-Tool/)
+
 This project provides an easy way to explore **course articulation agreements** between UC Berkeley and California community colleges.  
 It combines a **React + Tailwind frontend** with a **Python Selenium scraper** that fetches data from [Assist.org](https://assist.org).
 
