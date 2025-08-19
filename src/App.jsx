@@ -9,7 +9,7 @@ function App() {
 
   // load and parse the CSV on startup
   useEffect(() => {
-    fetch("/src/out/articulations.csv")
+    fetch("data/articulations.csv")
       .then((response) => response.text())
       .then((csvText) => {
         const result = Papa.parse(csvText, { header: true });

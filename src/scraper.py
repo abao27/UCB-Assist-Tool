@@ -173,7 +173,7 @@ def parse_args() -> Args:
     ap = argparse.ArgumentParser(description="ASSIST scraper (DOM-based)")
     ap.add_argument("--links", help="Text file with one non-PDF agreement URL per line.")
     ap.add_argument("--url", action="append", default=[], help="Add a single agreement URL (can repeat).")
-    ap.add_argument("--out", default="src/out/articulations.csv", help="Output CSV file (default: src/out/articulations.csv).")
+    ap.add_argument("--out", default="public/data/articulations.csv", help="Output CSV file (default: public/data/articulations.csv).")
     ap.add_argument("--no-headless", action="store_true", help="Show browser window.")
     ap.add_argument("--driver-path", default=None, help="Path to chromedriver (optional).")
     ap.add_argument("--scroll-passes", type=int, default=10, help="Scroll intensity (default: 10).")
