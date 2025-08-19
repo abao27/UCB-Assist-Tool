@@ -47,16 +47,23 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ```bash
 ├── public/
 ├── src/
-│ ├── data/
+│ ├── in/
+│ │ │── homepages.csv
+│ │ └── links.txt
+│ ├── out/
 │ │ └── articulations.csv
 │ ├── App.jsx
-│ ├── Tabs.jsx
+│ ├── index.css
 │ ├── main.jsx
-│ └── index.css
-├── tailwind.config.js
+│ ├── scraper.py
+│ └── Tabs.jsx
 ├── index.html
+├── launch.json
 ├── package.json
-└── scraper.py
+├── postcss.config.js
+├── requirements.txt
+├── tailwind.config.js
+└── vite.config.js
 ```
 
 ---
@@ -93,7 +100,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install selenium webdriver-manager beautifulsoup4 pandas
 
-python src/scraper.py --links links.txt
+python src/scraper.py --links src/in/links.txt
 ```
 Output will be saved to `src/data/articulations.csv`. Currently takes ***13-14 minutes*** to scrape all colleges.
 
