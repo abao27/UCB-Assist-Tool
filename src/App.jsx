@@ -47,14 +47,14 @@ function App() {
             label: "By Berkeley Course",
             content: (
               <div className="flex flex-col items-center">
-                <p className="mb-4 text-gray-700 text-center max-w-xl">
+                <p className="mb-4 text-gray-700 text-center max-w-xl text-base">
                   Select a UC Berkeley course to see which community college
                   courses are considered equivalent. This helps you check how
                   your coursework transfers.
                 </p>
 
                 <select
-                  className="border p-2 mb-4 w-64"
+                  className="border p-2 mb-4 w-64 text-sm"
                   value={berkeleyCourse}
                   onChange={(e) => setBerkeleyCourse(e.target.value)}
                 >
@@ -74,7 +74,7 @@ function App() {
                         <th className="border px-4 py-2">Equivalent Course</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-sm">
                       {equivalents.map((row, i) => (
                         <tr key={i}>
                           <td className="border px-4 py-2">{row.cc_name}</td>
@@ -93,7 +93,7 @@ function App() {
                         <th className="border px-4 py-2">Equivalent Course</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-sm">
                       {correspondences.map((row, i) => (
                         <tr key={i}>
                           <td className="border px-4 py-2">{row.b_course}</td>
