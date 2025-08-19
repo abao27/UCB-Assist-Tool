@@ -154,7 +154,7 @@ function App() {
       <p className="fixed bottom-0 left-0 w-full bg-white bg-opacity-90 
                    text-sm text-gray-500 text-center py-2 shadow-md">
         <span className="font-bold">Disclaimer:</span> This site is an independent
-        project and is not affiliated with UC Berkeley or ASSIST.org. Please verify
+        project and is not affiliated with UC Berkeley or Assist.org. Please verify
         all course articulations through{" "}
         <a
           href="https://assist.org"
