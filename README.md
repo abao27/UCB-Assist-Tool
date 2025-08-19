@@ -95,7 +95,7 @@ pip install selenium webdriver-manager beautifulsoup4 pandas
 
 python src/scraper.py --links links.txt
 ```
-Output will be saved to `src/data/articulations.csv`
+Output will be saved to `src/data/articulations.csv`. Currently takes ***13-14 minutes*** to scrape all colleges.
 
 ---
 
