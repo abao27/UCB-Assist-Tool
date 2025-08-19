@@ -48,15 +48,15 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ├── public/
 ├── src/
 │ ├── data/
-│ │ └── articulations.csv # Scraped articulation data consumed by frontend
-│ ├── App.jsx # Main React app
-│ ├── Tabs.jsx # Tab navigation component
-│ ├── main.jsx # React entry point
-│ └── index.css # Tailwind styles
+│ │ └── articulations.csv
+│ ├── App.jsx
+│ ├── Tabs.jsx
+│ ├── main.jsx
+│ └── index.css
 ├── tailwind.config.js
-├── index.html # Loads fonts + root div
+├── index.html
 ├── package.json
-└── scraper.py # Python Selenium scraper for Assist.org
+└── scraper.py
 ```
 
 ---
@@ -82,10 +82,8 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 
 ### Frontend
 ```bash
-# Install dependencies
 npm install
 
-# Start development server
 npm run dev
 ```
 
@@ -94,6 +92,7 @@ npm run dev
 python -m venv .venv
 source .venv/bin/activate
 pip install selenium webdriver-manager beautifulsoup4 pandas
+
 python src/scraper.py --links links.txt
 ```
 Output will be saved to src/data/articulations.csv
