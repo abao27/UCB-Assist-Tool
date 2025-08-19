@@ -48,7 +48,6 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ├── public/
 ├── src/
 │ ├── in/
-│ │ │── homepages.csv
 │ │ └── links.txt
 │ ├── out/
 │ │ └── articulations.csv
