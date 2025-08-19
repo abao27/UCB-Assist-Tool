@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Run Scraper (default)",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/src/assist_scraper.py",
+        "console": "integratedTerminal",
+        "args": []
+      },
+      {
+        "name": "Run Scraper (limit test)",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/src/assist_scraper.py",
+        "console": "integratedTerminal",
+        "args": [
+          "--limit-colleges", "2",
+          "--limit-departments", "3",
+          "--no-headless"
+        ]
+      }
+    ]
+  }
+  

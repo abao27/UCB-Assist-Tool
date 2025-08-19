@@ -11,9 +11,9 @@ export default function Tabs({ tabs }) {
           <button
             key={idx}
             onClick={() => setActive(idx)}
-            className={`p-2 ${
+            className={`p-2 font-inter ${
               active === idx
-                ? "border-b-2 border-blue-600 font-bold"
+                ? "border-b-2 border-[#FDB515] text-[#002676] font-bold"
                 : "text-gray-500"
             }`}
           >
@@ -21,7 +21,6 @@ export default function Tabs({ tabs }) {
           </button>
         ))}
       </div>
-
 
       {/* Tab content */}
       <div>{tabs[active].content}</div>
