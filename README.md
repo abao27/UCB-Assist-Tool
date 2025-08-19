@@ -1,7 +1,7 @@
 # UC Berkeley Assist Tool
 
 This project provides an easy way to explore **course articulation agreements** between UC Berkeley and California community colleges.  
-It combines a **React + Tailwind frontend** with a **Python Selenium scraper** that fetches data from [ASSIST.org](https://assist.org).
+It combines a **React + Tailwind frontend** with a **Python Selenium scraper** that fetches data from [assist.org](https://assist.org).
 
 ---
 
@@ -17,15 +17,15 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
   - Tables with widened layout and styled headers.
 - **Branding**
   - UC Berkeley theme colors (Berkeley Blue `#002676`, California Gold `#FDB515`).
-  - Fonts: Inter + Barlow.
+  - Fonts: Serif 4 + Barlow.
   - Disclaimer pinned at bottom of the page.
 
 ### Scraper
-- Scrapes [ASSIST.org](https://assist.org) to collect articulation agreements between **California Community Colleges** (sending institutions) and **UC Berkeley** (receiving institution).
+- Scrapes [assist.org](https://assist.org) to collect articulation agreements between **California Community Colleges** (sending institutions) and **UC Berkeley** (receiving institution).
 - Collects **By Department** agreements with UC Berkeley.
 - Extracts **CC course → UC Berkeley course** mappings.
-- Saves results as `CSV` (used by the frontend) and optionally `Parquet`.
-- Deduplication + sorting by Berkeley course.
+- Saves results as `CSV` (used by the frontend).
+- Removes duplicates and sorts by Berkeley course.
 - Configurable scrolling, headless mode, and Chrome driver options.
 
 ---
@@ -63,7 +63,7 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 1. **Scraper (`scraper.py`)**
    - Navigates to ASSIST.org articulation pages.
    - Extracts Berkeley courses, community college courses, and college names.
-   - Deduplicates and sorts results.
+   - Removes duplicates and sorts results.
    - Writes output to `src/data/articulations.csv` with columns:
      ```
      b_course, cc_name, cc_course
@@ -98,4 +98,4 @@ Output will be saved to src/data/articulations.csv
 
 ### Disclaimer
 This project is an independent tool and is not affiliated with UC Berkeley or ASSIST.org.
-Always confirm transfer agreements through (official sources)[https://assist.org].
+Always confirm transfer agreements through [official sources](https://assist.org).
