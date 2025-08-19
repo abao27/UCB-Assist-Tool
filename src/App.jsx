@@ -18,10 +18,10 @@ function App() {
   }, []);
 
   // Get all unique Berkeley courses
-  const berkeleyCourses = [...new Set(rows.map((r) => r.b_course))].filter(Boolean);
+  const berkeleyCourses = [...new Set(rows.map((r) => r.b_course))].filter(Boolean).sort((a, b) => a.localeCompare(b));
 
   // Get all unique community colleges
-  const communityColleges = [...new Set(rows.map((r) => r.cc_name))].filter(Boolean);
+  const communityColleges = [...new Set(rows.map((r) => r.cc_name))].filter(Boolean).sort((a, b) => a.localeCompare(b));
 
   // Case 1: If a UC Berkeley course is selected, show all community college equivalents
   const equivalents =
@@ -43,9 +43,9 @@ function App() {
           {
             label: "By Berkeley Course",
             content: (
-              <div>
+              <div className="flex flex-col items-center">
                 <select
-                  className="border p-2 mb-4"
+                  className="border p-2 mb-4 w-64"
                   value={berkeleyCourse}
                   onChange={(e) => setBerkeleyCourse(e.target.value)}
                 >
@@ -56,20 +56,20 @@ function App() {
                     </option>
                   ))}
                 </select>
-
+          
                 {equivalents.length > 0 && (
-                  <table className="border">
+                  <table className="border text-center">
                     <thead>
                       <tr>
-                        <th className="border px-2">Community College</th>
-                        <th className="border px-2">Equivalent Course</th>
+                        <th className="border px-4 py-2">Community College</th>
+                        <th className="border px-4 py-2">Equivalent Course</th>
                       </tr>
                     </thead>
                     <tbody>
                       {equivalents.map((row, i) => (
                         <tr key={i}>
-                          <td className="border px-2">{row.cc_name}</td>
-                          <td className="border px-2">{row.cc_course}</td>
+                          <td className="border px-4 py-2">{row.cc_name}</td>
+                          <td className="border px-4 py-2">{row.cc_course}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -81,9 +81,9 @@ function App() {
           {
             label: "By Community College",
             content: (
-              <div>
+              <div className="flex flex-col items-center">
                 <select
-                  className="border p-2 mb-4"
+                  className="border p-2 mb-4 w-64"
                   value={communityCollege}
                   onChange={(e) => setCommunityCollege(e.target.value)}
                 >
@@ -94,20 +94,20 @@ function App() {
                     </option>
                   ))}
                 </select>
-
+          
                 {correspondences.length > 0 && (
-                  <table className="border">
+                  <table className="border text-center">
                     <thead>
                       <tr>
-                        <th className="border px-2">Berkeley Course</th>
-                        <th className="border px-2">Equivalent Course</th>
+                        <th className="border px-4 py-2">Berkeley Course</th>
+                        <th className="border px-4 py-2">Equivalent Course</th>
                       </tr>
                     </thead>
                     <tbody>
                       {correspondences.map((row, i) => (
                         <tr key={i}>
-                          <td className="border px-2">{row.b_course}</td>
-                          <td className="border px-2">{row.cc_course}</td>
+                          <td className="border px-4 py-2">{row.b_course}</td>
+                          <td className="border px-4 py-2">{row.cc_course}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -116,6 +116,7 @@ function App() {
               </div>
             ),
           },
+          
         ]}
       />
     </div>
