@@ -150,7 +150,7 @@ function App() {
         ]}
       />
 
-      {/* Disclaimer pinned to bottom */}
+      {/* Disclaimer */}
       <p className="fixed bottom-0 left-0 w-full bg-white bg-opacity-90 
                    text-sm text-gray-500 text-center py-2 shadow-md">
         <span className="font-bold">Disclaimer:</span> This site is an independent

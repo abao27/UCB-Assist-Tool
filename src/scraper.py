@@ -32,7 +32,7 @@ def err(m: str) -> None:
     print(f"[error] {m}", file=sys.stderr, flush=True)
 
 
-# ---------------- Selenium bootstrap ----------------
+# <---------------- Selenium bootstrap ---------------->
 
 def make_webdriver(headless: bool = True,
                    driver_path: Optional[str] = None,
@@ -86,12 +86,12 @@ def smart_scroll_to_load(driver, max_loops: int = 30, min_stalls: int = 3, pause
         pass
 
 
-# ---------------- DOM-based extractor ----------------
+# <---------------- DOM-based extractor ---------------->
 
 def extract_pairs(driver) -> Tuple[str, List[Tuple[str,str]]]:
     pairs: List[Tuple[str,str]] = []
 
-    # --- Find community college name ---
+    # Find community college name
     cc_name = ""
     try:
         inst = driver.find_element(By.CSS_SELECTOR, ".instSending .inst b")
@@ -103,19 +103,19 @@ def extract_pairs(driver) -> Tuple[str, List[Tuple[str,str]]]:
     except Exception:
         cc_name = ""
 
-    # --- Extract articulation rows ---
+    # Extract articulation rows
     rows = driver.find_elements(By.CSS_SELECTOR, ".articRow")
 
     for row in rows:
-        # Skip GE area rows
+        # Skip geAreaCode rows
         if row.find_elements(By.CSS_SELECTOR, ".geAreaCode"):
             continue
 
-        # Receiving (UC Berkeley courses)
+        # Receiving (UC Berkeley)
         recv_tokens = row.find_elements(By.CSS_SELECTOR, ".rowReceiving .prefixCourseNumber")
         recv = " + ".join([t.text.strip() for t in recv_tokens if t.text.strip()])
 
-        # Sending (Community College courses)
+        # Sending (Community College)
         if row.find_elements(By.XPATH, ".//div[@class='rowSending']//p[contains(text(),'No Course Articulated')]"):
             continue
         send_tokens = row.find_elements(By.CSS_SELECTOR, ".rowSending .prefixCourseNumber")
@@ -124,7 +124,7 @@ def extract_pairs(driver) -> Tuple[str, List[Tuple[str,str]]]:
         if recv and send:
             pairs.append((recv, send))
 
-    # De-dup preserve order
+    # Remove duplicates
     seen = set()
     final: List[Tuple[str,str]] = []
     for a,b in pairs:
@@ -134,7 +134,7 @@ def extract_pairs(driver) -> Tuple[str, List[Tuple[str,str]]]:
     return cc_name, final
 
 
-# ---------------- Per-URL ----------------
+# <---------------- Per-URL ---------------->
 
 def process_html_link(driver, url: str, scroll_passes: int = 10) -> List[Tuple[str,str,str]]:
     log(f"→ {url}")
@@ -157,7 +157,7 @@ def process_html_link(driver, url: str, scroll_passes: int = 10) -> List[Tuple[s
         return []
 
 
-# ---------------- CLI ----------------
+# <---------------- CLI ---------------->
 
 @dataclass
 class Args:
@@ -235,28 +235,28 @@ def main() -> None:
         except Exception:
             pass
 
-    # Deduplicate + sort by b_course
+    # Remove duplications, sort by b_course
     seen = set()
-    deduped: List[Tuple[str,str,str]] = []
+    unique: List[Tuple[str,str,str]] = []
     for row in all_rows:
         if row not in seen:
             seen.add(row)
-            deduped.append(row)
-    deduped.sort(key=lambda x: x[0])  # sort by b_course
+            unique.append(row)
+    unique.sort(key=lambda x: x[0])  # sort by b_course
 
     # Write CSV
     try:
         with open(args.out, "w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(["b_course", "cc_name", "cc_course"])
-            for ucb, cc_name, cc_course in deduped:
+            for ucb, cc_name, cc_course in unique:
                 writer.writerow([ucb, cc_name, cc_course])
     except OSError as e:
         err(f"Failed to write {args.out}: {e}")
         sys.exit(4)
 
     total_time = time.perf_counter() - start_all
-    log(f"✓ Wrote {len(deduped)} rows to {args.out} in {total_time:.2f}s")
+    log(f"✓ Wrote {len(unique)} rows to {args.out} in {total_time:.2f}s")
 
 
 if __name__ == "__main__":

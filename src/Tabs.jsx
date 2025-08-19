@@ -5,7 +5,7 @@ export default function Tabs({ tabs }) {
 
   return (
     <div>
-      {/* Tab headers */}
+      {/* Headers */}
       <div className="flex justify-center space-x-4 border-b mb-4">
         {tabs.map((tab, idx) => (
           <button
@@ -22,7 +22,7 @@ export default function Tabs({ tabs }) {
         ))}
       </div>
 
-      {/* Tab content */}
+      {/* Content */}
       <div>{tabs[active].content}</div>
     </div>
   );
