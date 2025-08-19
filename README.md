@@ -30,6 +30,19 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 
 ---
 
+## Tech Stack
+- **Frontend**
+  - React + Vite
+  - Tailwind CSS
+  - PapaParse (for CSV parsing)
+- **Backend / Scraping**
+  - Python 3
+  - Selenium
+  - WebDriver Manager (for managing ChromeDriver)
+  - BeautifulSoup4 + Pandas (optional post-processing)
+
+---
+
 ## Project Structure
 ```bash
 ├── public/
@@ -45,27 +58,6 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ├── package.json
 └── scraper.py
 ```
-
----
-
-## Usage
-
-### Frontend
-```bash
-npm install
-
-npm run dev
-```
-
-### Scraper
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install selenium webdriver-manager beautifulsoup4 pandas
-
-python src/scraper.py --links links.txt
-```
-Output will be saved to `src/data/articulations.csv`.
 
 ---
 
@@ -86,16 +78,24 @@ Output will be saved to `src/data/articulations.csv`.
 
 ---
 
-## Tech Stack
-- **Frontend**
-  - React + Vite
-  - Tailwind CSS
-  - PapaParse (for CSV parsing)
-- **Backend / Scraping**
-  - Python 3
-  - Selenium
-  - WebDriver Manager (for managing ChromeDriver)
-  - BeautifulSoup4 + Pandas (optional post-processing)
+## Usage
+
+### Frontend
+```bash
+npm install
+
+npm run dev
+```
+
+### Scraper
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install selenium webdriver-manager beautifulsoup4 pandas
+
+python src/scraper.py --links links.txt
+```
+Output will be saved to `src/data/articulations.csv`
 
 ---
 
