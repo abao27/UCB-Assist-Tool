@@ -9,5 +9,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/ucb-assist-tool/',
+  base: '/Ucb-Assist-Tool/',
 })
