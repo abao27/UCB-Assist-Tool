@@ -30,19 +30,6 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 
 ---
 
-## Tech Stack
-- **Frontend**
-  - React + Vite
-  - Tailwind CSS
-  - PapaParse (for CSV parsing)
-- **Backend / Scraping**
-  - Python 3
-  - Selenium
-  - WebDriver Manager (for managing ChromeDriver)
-  - BeautifulSoup4 + Pandas (optional post-processing)
-
----
-
 ## Project Structure
 ```bash
 ├── public/
@@ -58,23 +45,6 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ├── package.json
 └── scraper.py
 ```
-
----
-
-## Data Flow
-1. **Scraper (`scraper.py`)**
-   - Navigates to Assist.org articulation pages.
-   - Extracts Berkeley courses, community college courses, and college names.
-   - Removes duplicates and sorts results.
-   - Writes output to `src/data/articulations.csv` with columns:
-     ```
-     b_course, cc_name, cc_course
-     ```
-
-2. **Frontend (`App.jsx`)**
-   - Loads CSV data using PapaParse.
-   - Provides dropdowns for either a Berkeley course or a community college.
-   - Displays results in styled, responsive tables.
 
 ---
 
@@ -95,7 +65,39 @@ pip install selenium webdriver-manager beautifulsoup4 pandas
 
 python src/scraper.py --links links.txt
 ```
-Output will be saved to src/data/articulations.csv
+Output will be saved to `src/data/articulations.csv`.
+
+---
+
+## Data Flow
+1. **Scraper (`scraper.py`)**
+   - Navigates to Assist.org articulation pages.
+   - Extracts Berkeley courses, community college courses, and college names.
+   - Removes duplicates and sorts results.
+   - Writes output to `src/data/articulations.csv` with columns:
+     ```
+     b_course, cc_name, cc_course
+     ```
+
+2. **Frontend (`App.jsx`)**
+   - Loads CSV data using PapaParse.
+   - Provides dropdowns for either a Berkeley course or a community college.
+   - Displays results in styled, responsive tables.
+
+---
+
+## Tech Stack
+- **Frontend**
+  - React + Vite
+  - Tailwind CSS
+  - PapaParse (for CSV parsing)
+- **Backend / Scraping**
+  - Python 3
+  - Selenium
+  - WebDriver Manager (for managing ChromeDriver)
+  - BeautifulSoup4 + Pandas (optional post-processing)
+
+---
 
 ### Disclaimer
 This project is an independent tool and is not affiliated with UC Berkeley or Assist.org.
