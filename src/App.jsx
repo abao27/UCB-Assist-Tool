@@ -42,6 +42,13 @@ function App() {
       </h1>
 
       <Tabs
+        onChange={(idx) => {
+          if (idx === 0) {
+            setCommunityCollege("");
+          } else if (idx === 1) {
+            setBerkeleyCourse("");
+          }
+        }}
         tabs={[
           {
             label: "By UC Berkeley Course",
