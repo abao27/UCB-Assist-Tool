@@ -1,7 +1,7 @@
 # UC Berkeley Assist Tool
 
 This project provides an easy way to explore **course articulation agreements** between UC Berkeley and California community colleges.  
-It combines a **React + Tailwind frontend** with a **Python Selenium scraper** that fetches data from [assist.org](https://assist.org).
+It combines a **React + Tailwind frontend** with a **Python Selenium scraper** that fetches data from [Assist.org](https://assist.org).
 
 ---
 
@@ -21,7 +21,7 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
   - Disclaimer pinned at bottom of the page.
 
 ### Scraper
-- Scrapes [assist.org](https://assist.org) to collect articulation agreements between **California Community Colleges** (sending institutions) and **UC Berkeley** (receiving institution).
+- Scrapes [Assist.org](https://assist.org) to collect articulation agreements between **California Community Colleges** (sending institutions) and **UC Berkeley** (receiving institution).
 - Collects **By Department** agreements with UC Berkeley.
 - Extracts **CC course → UC Berkeley course** mappings.
 - Saves results as `CSV` (used by the frontend).
@@ -44,6 +44,7 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ---
 
 ## Project Structure
+```bash
 ├── public/
 ├── src/
 │ ├── data/
@@ -55,13 +56,14 @@ It combines a **React + Tailwind frontend** with a **Python Selenium scraper** t
 ├── tailwind.config.js
 ├── index.html # Loads fonts + root div
 ├── package.json
-└── scraper.py # Python Selenium scraper for ASSIST.org
+└── scraper.py # Python Selenium scraper for Assist.org
+```
 
 ---
 
 ## Data Flow
 1. **Scraper (`scraper.py`)**
-   - Navigates to ASSIST.org articulation pages.
+   - Navigates to Assist.org articulation pages.
    - Extracts Berkeley courses, community college courses, and college names.
    - Removes duplicates and sorts results.
    - Writes output to `src/data/articulations.csv` with columns:
@@ -97,5 +99,5 @@ python src/scraper.py --links links.txt
 Output will be saved to src/data/articulations.csv
 
 ### Disclaimer
-This project is an independent tool and is not affiliated with UC Berkeley or ASSIST.org.
+This project is an independent tool and is not affiliated with UC Berkeley or Assist.org.
 Always confirm transfer agreements through [official sources](https://assist.org).
